@@ -1,4 +1,5 @@
 from graphics import Line, Point
+import graphics_config
 
 class Cell:
     # Init a cell with top-left, bottom-right coords and the window it's on
@@ -30,25 +31,25 @@ class Cell:
             if self.has_top_wall:
                 self._window.draw_line(line)
             else:
-                self._window.draw_line(line,"white")
+                self._window.draw_line(line,graphics_config.BACKGROUND_COLOR)
             #  Draw bottom wall
             line = Line(bottom_left,bottom_right)
             if self.has_bottom_wall:
                 self._window.draw_line(line)
             else:
-                self._window.draw_line(line,"white")
+                self._window.draw_line(line,graphics_config.BACKGROUND_COLOR)
             #  Draw left wall
             line = Line(top_left,bottom_left)
             if self.has_left_wall:
                 self._window.draw_line(line)
             else:
-                self._window.draw_line(line,"white")
+                self._window.draw_line(line,graphics_config.BACKGROUND_COLOR)
             #  Draw right wall
             line = Line(top_right,bottom_right)
             if self.has_right_wall:
                 self._window.draw_line(line)
             else:
-                self._window.draw_line(line,"white")
+                self._window.draw_line(line,graphics_config.BACKGROUND_COLOR)
             
     # Draw a path (line) from the center of this cell to that of next cell
     def draw_move(self,to_cell,undo=False):
@@ -58,7 +59,7 @@ class Cell:
         y2 = (to_cell._y1 + to_cell._y2) // 2
         line_color = "red"
         if undo:
-            line_color = "gray"
+            line_color = "blue"
         line = Line(Point(x1,y1),Point(x2,y2))
         self._window.draw_line(line,line_color)
             
